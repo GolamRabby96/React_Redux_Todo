@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { FaRegPlusSquare } from "react-icons/fa";
-import { updateSearchTerm } from "../redux/actions";
- import {useDispatch} from "react-redux"
+import { addTodo, updateSearchTerm } from "../redux/actions";
+ import {useDispatch, useSelector} from "react-redux"
 import { IoSearchCircleOutline } from "react-icons/io5";
 import FilterButton from "./FilterButton";
-
+import TodoList from './TodoList';
 
 const Todo = () => {
+    const todos = useSelector((state) => state.todos);
+    const filter = useSelector((state) => state.filter);
     const dispatch = useDispatch();
 
     const [newTodoText, SetNewTodoText] = useState("");
-    const [updateSearchTerm, setUpdateSearchTerm]=useState("")
+    const [searchTerm, setSearchTerm]=useState("")
 
     const handleAddToDo = (text) => {
         dispatch(addTodo(text));
@@ -21,6 +23,11 @@ const Todo = () => {
             handleAddToDo(newTodoText.trim());
             SetNewTodoText("");
         }
+    }
+
+    const handleSearchChange = (value) => {
+        setSearchTerm(value);
+        dispatch(updateSearchTerm(value));
     }
 
 
@@ -39,11 +46,12 @@ const Todo = () => {
             <div className="flex items-center justify-between">
                 <FilterButton />
                 <div className="flex items-center mb-4">
-                    <input type="text" value={updateSearchTerm} onChange={(e) => setUpdateSearchTerm(e.target.value)} name="addTodoInput" id="addTodoinput" placeholder="Add Todo"
+                    <input type="text" value={searchTerm} onChange={(e) => handleSearchChange(e.target.value)} name="addTodoInput" id="addTodoinput" placeholder="Add Todo"
                         className="flex-grow p-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-500" />
                     <button className="ml-4 p-2 bg-blue-400 text-white rounded hover:bg-blue-600"><IoSearchCircleOutline /></button>
                 </div>
             </div>
+            <TodoList/>
         </div>
     )
 }

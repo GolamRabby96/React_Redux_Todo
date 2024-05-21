@@ -5,7 +5,7 @@ export const addTodo = (text) =>({
     payload:{text}
 });
 
-export const togleToDo =(id)=>({
+export const toggleToDo =(id)=>({
     type:TOGGLE_TODO,
     payload:{id}
 });
