@@ -7,6 +7,7 @@ const initialState = {
 }
 
 const todoReducer = (state = initialState, action) => {
+    console.log("this is print form inside reducer", state);
     switch (action.type) {
         case ADD_TODO:
             return {
@@ -33,7 +34,7 @@ const todoReducer = (state = initialState, action) => {
                 todos: state.todos.map((todo, index) =>
                     index === action.payload.id ? { ...todo, completed: true } : todo
                 ),
-                filter: action.filter,
+                filter: state.filter,
                 searchTerm: state.searchTerm
             };
         case MARK_INCOMPLETED:
@@ -41,7 +42,7 @@ const todoReducer = (state = initialState, action) => {
                 todos: state.todos.map((todo, index) =>
                     index === action.payload.id ? { ...todo, completed: false } : todo
                 ),
-                filter: action.filter,
+                filter: state.filter,
                 searchTerm: state.searchTerm
             };
         case FILTER_TODO:

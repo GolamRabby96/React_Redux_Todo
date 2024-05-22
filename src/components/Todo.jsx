@@ -26,6 +26,7 @@ const Todo = () => {
     }
 
     const handleSearchChange = (value) => {
+        console.log("todojs form chek",value)
         setSearchTerm(value);
         dispatch(updateSearchTerm(value));
     }
