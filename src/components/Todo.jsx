@@ -26,7 +26,6 @@ const Todo = () => {
     }
 
     const handleSearchChange = (value) => {
-        console.log("todojs form chek",value)
         setSearchTerm(value);
         dispatch(updateSearchTerm(value));
     }
@@ -47,9 +46,9 @@ const Todo = () => {
             <div className="flex items-center justify-between">
                 <FilterButton />
                 <div className="flex items-center mb-4">
-                    <input type="text" value={searchTerm} onChange={(e) => handleSearchChange(e.target.value)} name="addTodoInput" id="addTodoinput" placeholder="Add Todo"
+                    <input type="text" value={searchTerm} onChange={(e) => handleSearchChange(e.target.value)} name="searchTodoInput" id="searchTodoInput" placeholder="Add Todo"
                         className="flex-grow p-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-500" />
-                    <button className="ml-4 p-2 bg-blue-400 text-white rounded hover:bg-blue-600"><IoSearchCircleOutline /></button>
+                    <button  className="ml-4 p-2 bg-blue-400 text-white rounded hover:bg-blue-600"><IoSearchCircleOutline /></button>
                 </div>
             </div>
             <TodoList/>

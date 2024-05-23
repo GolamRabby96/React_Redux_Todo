@@ -34,9 +34,9 @@ export const markAllCompleted = ()=>({
     type:MARK_ALL_COMPLETED,
 });
 
-export const updateSearchTerm = (search) =>({
+export const updateSearchTerm = (searchTerm) =>({
     type:UPDATE_SEARCH_TERM,
-    payload :{search}
+    payload :{searchTerm}
 })
 
 

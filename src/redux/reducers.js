@@ -7,7 +7,7 @@ const initialState = {
 }
 
 const todoReducer = (state = initialState, action) => {
-    console.log("this is print form inside reducer", state);
+    console.log("@@@@@@@@@@@@@this is print form inside reducer", state);
     switch (action.type) {
         case ADD_TODO:
             return {

@@ -6,18 +6,20 @@ const TodoList = () => {
     const filteredTodos = useSelector((state)=>{
         const todos = state.todos;
         const filter = state.filter;
-        const searchTerm = state.searchTerm;
-        console.log('search term item check',searchTerm);
+        const searchTerm = state.searchTerm.toLowerCase();
+        
         return todos.filter((todo) => {
             const matchsFilter = (filter === "COMPLETED" && todo.completed) || 
             (filter === "INCOMPLETED" && !todo.completed) || (filter === 'ALL');
-            console.log(matchsFilter)
-            const matchsSearch = todo.text?.toLowerCase().includes(searchTerm);
-            console.log("test",matchsSearch)
-            return matchsFilter || matchsSearch;
+            const matchsSearch = todo.text.toLowerCase().includes(searchTerm);
+
+            console.log("++++",todo.text.toLowerCase().includes(searchTerm))
+
+
+            return matchsFilter && matchsSearch;
         })
     })
-    console.log('filtered Todos:',filteredTodos);
+    console.log("**********",filteredTodos);
   return (
     <ul>
         <li className='my-2 text-sm italic'>All your Notes Here .....</li>
