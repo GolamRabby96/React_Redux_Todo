@@ -13,7 +13,7 @@ const TodoList = () => {
             (filter === "INCOMPLETED" && !todo.completed) || (filter === 'ALL');
             const matchsSearch = todo.text.toLowerCase().includes(searchTerm);
 
-            console.log("++++",todo.text.toLowerCase().includes(searchTerm))
+            console.log("++++",matchsFilter , matchsSearch,matchsFilter && matchsSearch)
 
 
             return matchsFilter && matchsSearch;
